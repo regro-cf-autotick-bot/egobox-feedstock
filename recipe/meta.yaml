@@ -1,5 +1,5 @@
 {% set name = "egobox" %}
-{% set version = "0.18.1" %}
+{% set version = "0.19.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9026962a19291e49583a39f9c533e2c29edb2280323b2b37b2c87f6c7a2f9cc4
+  sha256: ec3c06eb37b521d4ec902b94d46de297fe168c3e76f7c907505b82bc36fe6d16
 
 build:
   skip: true  # [py<38 or python_impl == 'pypy']
-  script: 
+  script:
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
     - {{ PYTHON }} -m pip install . -vv
-  number: 2
+  number: 0
 
 requirements:
   build:
@@ -43,7 +43,7 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file:
-    - THIRDPARTY.yml 
+    - THIRDPARTY.yml
     - LICENSE
 
 extra:
